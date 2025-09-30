@@ -1,3 +1,4 @@
+
 """Django settings for the BlogCraftAI project."""
 from __future__ import annotations
 
@@ -22,9 +23,7 @@ else:
     DEBUG = DJANGO_ENV not in {"production", "prod"}
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
-    if host.strip()
+    "*"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -184,6 +183,5 @@ LOGGING = {
     },
 }
 
-AI_PROVIDER_URL = os.getenv("AI_PROVIDER_URL", "https://example.com/v1/seo")
+AI_PROVIDER_URL = os.getenv("AI_PROVIDER_URL", "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBUm8Eg71Bciy5NcuzUCZn_JzQr57mpfyQ")
 AI_PROVIDER_TIMEOUT = float(os.getenv("AI_PROVIDER_TIMEOUT", "10"))
-
